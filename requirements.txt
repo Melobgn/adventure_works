@@ -1,0 +1,9 @@
+pyodbc
+pandas
+azure-identity
+python-dotenv
+sqlalchemy
+azure-storage-blob
+pyarrow
+pillow
+openpyxl

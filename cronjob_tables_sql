@@ -1,0 +1,1 @@
+0 20-23,0-6 * * * python3 /home/utilisateur/Documents/Data_engineering/Adventure_works_project/script_azuresql.py >> /home/utilisateur/Documents/Data_engineering/Adventure_works_project/export_log.log 2>&1
