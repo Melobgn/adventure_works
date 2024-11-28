@@ -7,7 +7,7 @@ from azure.storage.blob import BlobServiceClient
 import dotenv
 
 # Charger les variables d'environnement depuis le fichier .env
-dotenv.load_dotenv()
+dotenv.load_dotenv(override=True)
 
 # Configuration
 STORAGE_ACCOUNT_NAME = os.getenv("STORAGE_ACCOUNT_NAME")

@@ -6,13 +6,14 @@ import requests
 import dotenv
 
 # Charger les variables d'environnement depuis le fichier .env
-dotenv.load_dotenv()
+dotenv.load_dotenv(override=True)
 
 # Configuration
 STORAGE_ACCOUNT_NAME = os.getenv("STORAGE_ACCOUNT_NAME")
 CONTAINER_NAME = os.getenv("CONTAINER_NAME")
 DIRECTORY = os.getenv("DIRECTORY")
 SAS_TOKEN = os.getenv("SAS_TOKEN")  # Lire le SAS token depuis .env
+print(SAS_TOKEN)
 
 # Fonction pour télécharger un blob en recréant la structure des répertoires
 def download_blob(blob_url, blob_name):
