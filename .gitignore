@@ -191,5 +191,8 @@ pyrightconfig.json
 # Fichiers CSV
 .csv 
 
+# Cronjobs
+cronfile
+
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,python
