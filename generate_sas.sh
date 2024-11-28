@@ -4,16 +4,16 @@
 SCRIPT_DIR=$(dirname "$0")  # Répertoire du script
 ENV_FILE="$SCRIPT_DIR/.env"  # Chemin vers le fichier .env
 
-# Variables Azure
-STORAGE_ACCOUNT_NAME="datalakedeviavals"        # Remplacez par le nom de votre compte de stockage
-CONTAINER_NAME="data"                       # Remplacez par le nom de votre conteneur
-STORAGE_ACCOUNT_KEY=$(grep -oP '^STORAGE_ACCOUNT_KEY="\K[^"]+' "$ENV_FILE")  # Récupérer la clé de stockage du .env
+# Charger les variables depuis le fichier .env
+STORAGE_ACCOUNT_NAME=$(grep -oP '^STORAGE_ACCOUNT_NAME="\K[^"]+' "$ENV_FILE")  # Récupérer le nom du compte de stockage
+CONTAINER_NAME=$(grep -oP '^CONTAINER_NAME="\K[^"]+' "$ENV_FILE")              # Récupérer le nom du conteneur
+STORAGE_ACCOUNT_KEY=$(grep -oP '^STORAGE_ACCOUNT_KEY="\K[^"]+' "$ENV_FILE")    # Récupérer la clé de stockage
 PERMISSIONS="rl"                            # Permissions : r = lecture, l = liste
 EXPIRY=$(date -u -d "1 hour" '+%Y-%m-%dT%H:%MZ') # Expiration du SAS (ici, dans 1 heure)
 
-# Vérifier si la clé de stockage a été trouvée
-if [ -z "$STORAGE_ACCOUNT_KEY" ]; then
-    echo "Erreur : La clé de stockage (STORAGE_ACCOUNT_KEY) est absente dans le fichier .env."
+# Vérifier si les variables Azure ont été trouvées
+if [ -z "$STORAGE_ACCOUNT_NAME" ] || [ -z "$CONTAINER_NAME" ] || [ -z "$STORAGE_ACCOUNT_KEY" ]; then
+    echo "Erreur : Certaines variables Azure (STORAGE_ACCOUNT_NAME, CONTAINER_NAME, STORAGE_ACCOUNT_KEY) sont absentes dans le fichier .env."
     exit 1
 fi
 
